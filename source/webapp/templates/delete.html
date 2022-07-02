@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form action="" method="post">
+   {% csrf_token %}
+    <h3>Вы уверены, что хотите удалить статью {{ record.title }}?</h3>
+    <br>
+    <p><input type="submit" value="Да"/></p>
+        </form>
+    <button><a href="{% url 'index_view'  %}">Нет</a></button>
+
+
+{% endblock %}

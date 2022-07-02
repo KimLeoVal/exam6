@@ -7,6 +7,7 @@ from webapp.models import STATUS_CHOICES, Record
 def index_view(request):
     records = Record.objects.filter(status='active')
 
+
     context = {"records": records}
     return render(request, "index.html", context)
 
@@ -26,6 +27,7 @@ def create_record(request):
             new_record = Record.objects.create(author=author, mail=mail, status=status, description=description)
             return redirect("index_view")
         return render(request, "create.html", {"form": form})
+
 
 
 # def update_task(request, pk):
@@ -50,10 +52,12 @@ def create_record(request):
 #         return render(request, "update.html", {"form": form})
 #
 #
+
 def delete_record(request, pk):
     record = get_object_or_404(Record, pk=pk)
     if request.method == "GET":
-        pass
+        return render(request, "delete.html", {'record': record})
     else:
         record.delete()
         return redirect("index_view")
+

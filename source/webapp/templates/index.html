@@ -9,19 +9,17 @@
 {% block content %}
 
 <div class="container">
-    <div class="card border-0">
-        <div class="card-body ">
+
             <h2>Список записей:</h2>
 
                         {% for record in records %}
                             <h4 class="card-title mt-2">{{ record.author }}({{ record.mail }})</h4>
                             <p>{{ record.description }}</p>
 
-                            <div class="btn">
+                            <a href="{% url "delete_record" record.pk %}">Delete</a>
 
-        </div>
         {% endfor %}
-    </div>
-</div>
+
+
 </div>
 {% endblock %}

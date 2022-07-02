@@ -1,0 +1,74 @@
+[
+{
+    "model": "webapp.record",
+    "pk": 2,
+    "fields": {
+        "author": "test2",
+        "mail": "test2@mail.ru",
+        "description": "test2test2test2test2test2",
+        "created_at": "2022-07-02T09:12:01.666Z",
+        "updated_at": "2022-07-02T09:12:01.666Z",
+        "status": "active"
+    }
+},
+{
+    "model": "webapp.record",
+    "pk": 4,
+    "fields": {
+        "author": "test3",
+        "mail": "test3@mail.ru",
+        "description": "test3test3test3test3test3test3",
+        "created_at": "2022-07-02T09:15:57.422Z",
+        "updated_at": "2022-07-02T09:15:57.423Z",
+        "status": "blocked"
+    }
+},
+{
+    "model": "webapp.record",
+    "pk": 5,
+    "fields": {
+        "author": "test1",
+        "mail": "test1@mail.ru",
+        "description": "test1test1test1test1",
+        "created_at": "2022-07-02T10:06:13.506Z",
+        "updated_at": "2022-07-02T10:06:13.506Z",
+        "status": "active"
+    }
+},
+{
+    "model": "webapp.record",
+    "pk": 6,
+    "fields": {
+        "author": "test3",
+        "mail": "test3@mail.ru",
+        "description": "test3test3test3test3",
+        "created_at": "2022-07-02T10:06:29.675Z",
+        "updated_at": "2022-07-02T10:06:29.675Z",
+        "status": "active"
+    }
+},
+{
+    "model": "webapp.record",
+    "pk": 7,
+    "fields": {
+        "author": "test4",
+        "mail": "test4@mail.ru",
+        "description": "test4test4test4test4test4",
+        "created_at": "2022-07-02T10:06:53.818Z",
+        "updated_at": "2022-07-02T10:06:53.818Z",
+        "status": "blocked"
+    }
+},
+{
+    "model": "webapp.record",
+    "pk": 8,
+    "fields": {
+        "author": "test5",
+        "mail": "test5@mail.ru",
+        "description": "test5test5test5",
+        "created_at": "2022-07-02T10:07:14.120Z",
+        "updated_at": "2022-07-02T10:07:14.120Z",
+        "status": "active"
+    }
+}
+]
