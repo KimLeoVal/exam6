@@ -5,9 +5,12 @@ from webapp.models import STATUS_CHOICES, Record
 
 
 def index_view(request):
-    records = Record.objects.filter(status='active')
-    context = {"records": records}
-    return render(request, "index.html", context)
+    if request.method == "GET":
+        form = RecordForm()
+        records = Record.objects.filter(status='active').order_by('-created_at')
+        context = {"records": records, "form": form}
+        return render(request, "index.html", context)
+
 
 
 def create_record(request):
@@ -21,10 +24,9 @@ def create_record(request):
             mail = form.cleaned_data.get("mail")
             description = form.cleaned_data.get("description")
             status = form.cleaned_data.get("status")
-            new_record = Record.objects.create(author=author, mail=mail, status=status, description=description)
+            new_record = Record.objects.create(author=author, mail=mail, description=description)
             return redirect("index_view")
         return render(request, "create.html", {"form": form})
-
 
 
 def update_record(request, pk):
@@ -46,6 +48,8 @@ def update_record(request, pk):
             record.save()
             return redirect("index_view")
         return render(request, "update.html", {"form": form})
+
+
 #
 #
 
@@ -56,4 +60,3 @@ def delete_record(request, pk):
     else:
         record.delete()
         return redirect("index_view")
-
