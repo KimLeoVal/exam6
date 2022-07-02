@@ -1,25 +1,27 @@
-{% extends "base.html"%}
+{% extends "base.html" %}
 {% load static %}
-{% block title %}Главная{% endblock %}
+{% block title %}Гостевая книга{% endblock %}
 {% block nav_add %}
     <li class="nav-item">
-        <a class="nav-link" href="{% url "create_task" %}">Создать задачу</a>
+        <a class="nav-link" href='{% url "create_record" %}'>Создать запись</a>
     </li>
 {% endblock %}
 {% block content %}
 
-<div class="container p-3">
-        <div class="card border-0">
-            <div class="card-body ">
-            <h1 class="text-success">Список задач:</h1>
-            {% for task in tasks %}
-                <h4 class="card-title mt-2">{{ task.title }}</h4>
-                <a href="{% url "task_view" task.pk %}" class="btn btn-light">Подробнее</a>
-                <div class="btn">
+<div class="container">
+    <div class="card border-0">
+        <div class="card-body ">
+            <h2>Список записей:</h2>
 
-                </div>
-            {% endfor %}
-            </div>
+                        {% for record in records %}
+                            <h4 class="card-title mt-2">{{ record.author }}({{ record.mail }})</h4>
+                            <p>{{ record.description }}</p>
+
+                            <div class="btn">
+
         </div>
+        {% endfor %}
+    </div>
+</div>
 </div>
 {% endblock %}

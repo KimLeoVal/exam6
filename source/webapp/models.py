@@ -4,7 +4,7 @@ STATUS_CHOICES = [('active', 'Активно'), ('blocked', 'Заблокиро�
 
 
 class Record(models.Model):
-    author = models.TextField(max_length=30, verbose_name='Имя')
+    author = models.CharField(max_length=30, verbose_name='Имя')
     mail = models.EmailField(max_length=20, verbose_name='Почта')
     description = models.TextField(max_length=2000)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Время создания')
@@ -14,7 +14,7 @@ class Record(models.Model):
 
 
 def __str__(self):
-    return "{}. {}".format(self.pk, self.author)
+    return self.author, self.mail, self.description
 
 
 class Meta:
