@@ -6,8 +6,6 @@ from webapp.models import STATUS_CHOICES, Record
 
 def index_view(request):
     records = Record.objects.filter(status='active')
-
-
     context = {"records": records}
     return render(request, "index.html", context)
 
@@ -18,7 +16,6 @@ def create_record(request):
         return render(request, "create.html", {"statuses": STATUS_CHOICES, "form": form})
     else:
         form = RecordForm(data=request.POST)
-        print(request.POST)
         if form.is_valid():
             author = form.cleaned_data.get("author")
             mail = form.cleaned_data.get("mail")
@@ -30,26 +27,25 @@ def create_record(request):
 
 
 
-# def update_task(request, pk):
-#     task = get_object_or_404(Task, pk=pk)
-#     if request.method == "GET":
-#         form = TaskForm(initial={
-#             "title": task.title,
-#             "description": task.description,
-#             "status": task.status,
-#             "done_at": task.done_at
-#         })
-#         return render(request, "update.html", {"form": form})
-#     else:
-#         form = TaskForm(data=request.POST)
-#         if form.is_valid():
-#             task.title = form.cleaned_data.get("title")
-#             task.description = form.cleaned_data.get("description")
-#             task.status = form.cleaned_data.get("status")
-#             task.done_at = form.cleaned_data.get("done_at")
-#             task.save()
-#             return redirect("task_view", pk=task.pk)
-#         return render(request, "update.html", {"form": form})
+def update_record(request, pk):
+    record = get_object_or_404(Record, pk=pk)
+    if request.method == "GET":
+        form = RecordForm(initial={
+            "author": record.author,
+            "mail": record.mail,
+            "description": record.description,
+            "status": record.status,
+        })
+        return render(request, "update.html", {"form": form})
+    else:
+        form = RecordForm(data=request.POST)
+        if form.is_valid():
+            record.author = form.cleaned_data.get("author")
+            record.mail = form.cleaned_data.get("mail")
+            record.description = form.cleaned_data.get("description")
+            record.save()
+            return redirect("index_view")
+        return render(request, "update.html", {"form": form})
 #
 #
 

@@ -5,11 +5,5 @@
     <form action="{% url 'create_record' %}" method="POST">
 {% include "partial/form.html" with button='Create' %}
 </form>
-{% if new_record %}
-Имя: {{ new_record.author }}
-Описание: {{ new_record.description }}
-
-
-{% endif %}
 {% endblock %}
 </div>
